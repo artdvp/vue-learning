@@ -1,51 +1,84 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <zoo :animals="animals" :animalCodes="animalCodes" :name="name"></zoo>
+  <div id="app" class="jumbotron">
+    <div>
+            <label for="name" v-bind:class="{green: name, red: !name }">What's your name ?</label>
+            <!-- <introduction @nameChanged="onNameChanged" :initialName="name"></introduction> -->
+                        <introduction></introduction>
+        </div>
+        <img :src="name ? gladSrc : sadSrc" alt="">
+        <h1>Hello,
+            <strong>{{name}}</strong> ! Let's learn Vue.js</h1>
+        <br>
+        <h2>
+            <span v-show="name">Hello,
+                <strong>{{name}}</strong>
+            </span> ! Let's learn Vue.js</h2>
+        <br>
+        <h2>
+            <span v-if="name">Hello,
+                <strong>{{name}}</strong>
+            </span> ! Let's learn Vue.js</h2>
+        <div class="emos">&#x1f638;</div>
+        <br>
+        <div>{{animalCodes.cat}}</div>
+        <div v-text="animalCodes.cat"></div>
+        <div class="emos" v-html="animalCodes.cat"></div>
+        <ol>
+            <h2><span>{{name}} !</span>Here's your zoo</h2>
+            <li v-for="(animal,index) in animals" :key="index">
+                <span class="animal" v-html="animalCodes[animal]"></span>
+            </li>
+        </ol>
+        <hr>
+        <select v-model="animalsForZoo" name="animals" id="animals" multiple="multiple">
+            <option v-for="(animal,index) in animals" :value="animal" :key="index">{{ animal }}</option>
+        </select>
+        <ol>
+            <h2><span>{{name}} !</span>Here's your selected zoo</h2>
+            <li v-for="(animal,index) in animalsForZoo" :key="index">
+                <span class="animal" v-html="animalCodes[animal]"></span>
+            </li>
+        </ol>
+    
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Zoo from "./components/Zoo.vue";
-
-const animalCodes = {
-  dog: "&#x1f436;",
-  cat: "&#x1f638;",
-  monkey: "&#x1f435;",
-  unicorn: "&#x1f984;",
-  tiger: "&#x1f42f;",
-  mouse: "&#x1f42d;",
-  rabbit: "&#x1f430;",
-  cow: "&#x1f42e;",
-  whale: "&#x1f433;",
-  horse: "&#x1f434;",
-  pig: "&#x1f437;",
-  frog: "&#x1f438;",
-  koala: "&#x1f43c;"
-};
-const animals = Object.keys(animalCodes);
-var animalsForZoo = [];
-
-var data = {
-  name: "Oljow",
-  animalCodes,
-  animals,
-  animalsForZoo,
-  sadSrc:
-    "https://www.shareicon.net/data/128x128/2017/06/16/887152_sad_512x512.png",
-  gladSrc:
-    "https://www.shareicon.net/data/128x128/2017/06/16/887150_happy_512x512.png"
-};
+import Introduction from "./components/Introduce.vue";
 
 export default {
   name: "app",
   components: {
     HelloWorld,
-    Zoo
+    Zoo,
+    Introduction
   },
   data() {
     return data;
+  },
+  methods: {
+    onNameChanged(newName) {
+      this.name = newName;
+    }
+  },
+  computed: {
+    name() {
+      return this.$store.state.name;
+    },
+    animals() {
+      return this.$store.state.animals;
+    },
+    animalCodes() {
+      return this.$store.state.animalCodes;
+    },
+    sadSrc () {
+      return this.$store.state.sadSrc
+    },
+    gladSrc () {
+      return this.$store.state.gladSrc
+    }
   }
 };
 </script>
