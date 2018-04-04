@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vuejs2 Book - Chapter2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <style lang="css">
+        .emos {
+            font-size: 100px;
+        }
+
+        .green {
+            color: green;
+            font-weight: bold;
+        }
+
+        .red {
+            color: red;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="name" v-bind:class="{green: name, red: !name }">What's your name ?</label>
+            <input type="text" id="name" v-model.lazy.trim="name">
+        </div>
+        <img :src="name ? gladSrc : sadSrc" alt="">
+        <h1>Hello,
+            <strong>{{name}}</strong> ! Let's learn Vue.js</h1>
+        <br>
+        <h2>
+            <span v-show="name">Hello,
+                <strong>{{name}}</strong>
+            </span> ! Let's learn Vue.js</h2>
+        <br>
+        <h2>
+            <span v-if="name">Hello,
+                <strong>{{name}}</strong>
+            </span> ! Let's learn Vue.js</h2>
+        <div class="emos">&#x1f638;</div>
+        <br>
+        <div>{{animalCodes.cat}}</div>
+        <div v-text="animalCodes.cat"></div>
+        <div class="emos" v-html="animalCodes.cat"></div>
+        <ol>
+            <h2><span>{{name}} !</span>Here's your zoo</h2>
+            <li v-for="animal in animals">
+                <span class="animal" v-html="animalCodes[animal]"></span>
+            </li>
+        </ol>
+        <hr>
+        <select v-model="animalsForZoo" name="animals" id="animals" multiple="multiple">
+            <option v-for="animal in animals" :value="animal">{{ animal }}</option>
+        </select>
+        <ol>
+            <h2><span>{{name}} !</span>Here's your selected zoo</h2>
+            <li v-for="animal in animalsForZoo">
+                <span class="animal" v-html="animalCodes[animal]"></span>
+            </li>
+        </ol>
+    </div>
+    <script>
+        /*
+        Vue directives
+        Conditional rendering
+        Text versus HTML
+        Loops
+        Binding data
+        Handling events
+        */
+        const animalCodes = {
+            dog: '&#x1f436;',
+            cat: '&#x1f638;',
+            monkey: '&#x1f435;',
+            unicorn: '&#x1f984;',
+            tiger: '&#x1f42f;',
+            mouse: '&#x1f42d;',
+            rabbit: '&#x1f430;',
+            cow: '&#x1f42e;',
+            whale: '&#x1f433;',
+            horse: '&#x1f434;',
+            pig: '&#x1f437;',
+            frog: '&#x1f438;',
+            koala: '&#x1f43c;'
+        }
+        const animals = Object.keys(animalCodes)
+        var animalsForZoo = []
+        var data = {
+            name: 'Oljow',
+            animalCodes,
+            animals,
+            animalsForZoo,
+            sadSrc: 'https://www.shareicon.net/data/128x128/2017/06/16/887152_sad_512x512.png',
+            gladSrc: 'https://www.shareicon.net/data/128x128/2017/06/16/887150_happy_512x512.png'
+        }
+        new Vue({
+            el: '#app',
+            data,
+            methods: {
+                populateAnimalsForZoo(ev) {
+                    this.animalsForZoo = []
+                    const selected = document.querySelectorAll('#animals option:checked')
+                    for (let i = 0; i < selected.length; i++) {
+                        this.animalsForZoo.push(selected[i].value)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
