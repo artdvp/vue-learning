@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Computed Properties</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reverseMessage }}"</p>
+    <div>{{ now }}</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      },
+      computed: {
+        reverseMessage: function () {
+          return this.message.split('').reverse().join('')
+        },
+        now: function() {
+          return Date.now()
+        }
+      },
+      methods: {
+        reverseMessage2: function(){
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

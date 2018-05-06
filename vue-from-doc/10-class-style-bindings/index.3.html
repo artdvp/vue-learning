@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Binding HTML Classes</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+  .active {
+    color: green;
+    font-size: 30px;
+  }
+
+  .text-danger {
+    color: red;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div v-bind:class="[activeClass, errorClass]">
+      Text Open
+    </div>
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]">
+      Text Open 2
+    </div>
+    <div v-bind:class="[{ active: isActive }, errorClass]">
+        Text Open 3
+      </div>
+  </div>
+
+  <script>
+    // Array Syntax
+    var app = new Vue({
+      el: '#app',
+      data: {
+        activeClass: 'active',
+        errorClass: 'text-danger'
+      }
+    })
+  </script>
+</body>
+
+</html>

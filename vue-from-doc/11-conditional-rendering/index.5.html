@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conditional Rendering</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+  </div>
+
+  <script>
+    // v-if
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        ok: true
+      }
+    })
+  </script>
+</body>
+</html>

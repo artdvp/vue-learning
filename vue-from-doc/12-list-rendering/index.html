@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>List Rendering</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>
+    <br>
+    <ul>
+      <li v-for="(item,index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+    <br>
+    <div v-for="item in items">
+      {{ item.message }}
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        parentMessage: 'Parent',
+        items: [{
+            message: 'Foo'
+          },
+          {
+            message: 'Bar'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

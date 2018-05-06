@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="n in evenNumbers">{{ n }}</li>
+    </ul>
+    <br>
+    <ul>
+      <li v-for="n in odd(numbers)">{{ n }}</li>
+    </ul>
+    <br>
+    <div>
+      <span v-for="n in 10">{{ n }}</span>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        numbers: [1, 2, 3, 4, 5]
+      },
+      computed: {
+        evenNumbers: function () {
+          return this.numbers.filter(function (number) {
+            return number % 2 === 0
+          })
+        }
+      },
+      methods: {
+        odd: function (numbers) {
+          return numbers.filter(function (number) {
+            return number % 2 !== 0
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

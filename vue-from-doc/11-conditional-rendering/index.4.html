@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conditional Rendering</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <compo></compo>
+  </div>
+
+  <script>
+    // Controlling Reusable Element with key
+    Vue.component('compo', {
+      data: function(){
+        return {
+          loginType: 'username'
+        }
+      },
+      methods: {
+        toggleUs: function(){
+          this.loginType = this.loginType === 'username' ? 'email' : 'username';
+        }
+      },
+      template: `
+      <div>
+        <div v-if="loginType === 'username'">
+          <label>Username</label>
+          <input placeholder="Enter your username" key="username-input">
+        </div>
+        <div v-else>
+          <label>Email</label>
+          <input placeholder="Enter your email address" key="email-input">
+        </div>
+        <br>
+        <button @click="toggleUs">Toggle User</button>
+      </div>
+      `
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        ok: true,
+        type: 'A'
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Binding HTML Classes</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+  .active {
+    color: green;
+    font-size: 30px;
+  }
+
+  .text-danger {
+    color: red;
+  }
+
+  .baz {
+    font-weight: bold;
+  }
+  .boo {
+    font-size: 10px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <my-component class="baz boo"></my-component>
+    <my-component v-bind:class="{ active: isActive }"></my-component>
+
+  </div>
+
+  <script>
+    // With Components
+    Vue.component('my-component', {
+      template: '<p class="foo bar">Hello Vue</p>'
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        hasError: false
+      }
+    })
+  </script>
+</body>
+
+</html>

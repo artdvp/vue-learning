@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Conditional Rendering</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ifer></ifer>
+  </div>
+
+  <script>
+    // Conditional Groups with v-if on <template>
+    Vue.component('ifer', {
+      data: function () {
+        return {
+          ok: true
+        }
+      },
+      template: 
+      `<div v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </div>`
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Composing with Components</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <ol>
+      <todo-item></todo-item>
+    </ol>
+  </div>
+
+  <script>
+  
+    Vue.component('todo-item', {
+      template: '<li>This is a todo</li>'
+    })
+  </script>
+</body>
+</html>
