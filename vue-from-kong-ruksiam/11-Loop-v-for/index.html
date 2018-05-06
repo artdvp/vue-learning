@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kongruk Vue - 11</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button type="button" name="button" @click="like=!like">Like</button>
+        <h1 v-if="like">Hello Like</h1>
+        <br>
+        <h2 v-show="like">Show Like</h2>
+        <br>
+        <h1>Products</h1>
+        <ul>
+            <li v-for="product in products">{{ product }}</li>
+        </ul>
+        <br>
+        <ul>
+            <li v-for="employee in employees">
+                {{ employee }}
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li v-for="employee in employees" v-if="employee.status">
+                {{ employee.name }} - age: {{ employee.age }}
+            </li>
+        </ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

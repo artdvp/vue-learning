@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kongruk Vue - 08</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        Name: <input type="text" name="" v-model="name">
+        <br>
+        Stack: 
+        <br>
+        <input type="checkbox" value="Vue" v-model="stacks">
+        <label>Vue</label><br>
+        <input type="checkbox" value="React" v-model="stacks">
+        <label>React</label><br>
+        <input type="checkbox" value="Angular" v-model="stacks">
+        <label>Angular</label>
+        <hr>
+        <h1>{{ stacks }}</h1>
+        <br>
+        Gender:<br>
+        <input type="radio" value="Male" v-model="gender">
+        <label>Male</label>
+        <input type="radio" value="Female" v-model="gender">
+        <label>Female</label>
+        <br>
+        <h1>Gender : {{ gender }}</h1>
+        <br>
+        <h1>Name : {{ name }}</h1>
+        <h1>Job : {{ job }}</h1>
+        <h1>Age : {{ age }}</h1>
+        <h1>Website :
+            <a :href="website" target="_blank">{{ website }}</a>
+        </h1>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
