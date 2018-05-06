@@ -58,3 +58,21 @@ $ firebase deploy
 ```
 
 demo >> [https://vue-introduce.firebaseapp.com](https://vue-introduce.firebaseapp.com)
+
+
+src/config.js
+
+```js
+let config = {
+  apiKey: "KEY",
+  authDomain: "domain",
+  databaseURL: "database domain",
+  projectId: "project id",
+  storageBucket: "storage",
+  messagingSenderId: "message id"
+};
+
+export default {
+    config
+}
+```

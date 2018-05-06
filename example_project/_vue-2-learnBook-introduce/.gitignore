@@ -15,3 +15,5 @@ yarn-error.log*
 *.sln
 
 package-lock.json
+
+src/config.js

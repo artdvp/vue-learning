@@ -39,17 +39,9 @@
 import Firebase from "firebase";
 import { dateToString } from "./utils/utils";
 import Card from "./components/Card";
+import cf from "./config"
 
-let config = {
-  apiKey: "AIzaSyDz3www4KfCnSdA6UlkDyADjBUfmFwuCnk",
-  authDomain: "vue-introduce.firebaseapp.com",
-  databaseURL: "https://vue-introduce.firebaseio.com",
-  projectId: "vue-introduce",
-  storageBucket: "vue-introduce.appspot.com",
-  messagingSenderId: "871672068953"
-};
-
-let app = Firebase.initializeApp(config);
+let app = Firebase.initializeApp(cf.config);
 
 let db = app.database();
 let messageOur = db.ref("titletext");
