@@ -19,6 +19,7 @@
       data: {
         message: 'Hello Vue!'
       },
+      // Computed Properties
       computed: {
         reverseMessage: function () {
           return this.message.split('').reverse().join('')
@@ -27,6 +28,7 @@
           return Date.now()
         }
       },
+      // Computed Caching vs Methods
       methods: {
         reverseMessage2: function(){
           return this.message.split('').reverse().join('')
